@@ -1,0 +1,13 @@
+
+==================================================
+ENVIRONMENT & LIBRARY VERSIONS
+==================================================
+Python         : 3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]
+Platform       : Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35
+Pandas         : 2.3.3
+NumPy          : 2.2.6
+Matplotlib     : 3.10.7
+Seaborn        : 0.13.2
+Scikit-Learn   : 1.7.2
+SHAP           : 0.49.1
+==================================================
