@@ -62,91 +62,6 @@ import seaborn as sns
 # [VN] Nhập theilslopes từ scipy cho hồi quy tuyến tính mạnh mẽ để bỏ qua các điểm dị biệt.
 from scipy.stats import theilslopes
 
-# [EN] Define a function to capture and save the versions of all major libraries.
-# [VN] Định nghĩa một hàm để thu thập và lưu các phiên bản của tất cả các thư viện chính.
-def log_library_versions(report_file='report.txt'):
-    """
-    [EN] Captures and records the versions of the Python interpreter and all major libraries used in the environment.
-    [VN] Ghi lại và lưu trữ các phiên bản của trình thông dịch Python và tất cả các thư viện chính được sử dụng trong môi trường.
-    """
-    # [EN] Create a list of tuples containing library names and their respective version strings.
-    # [VN] Tạo một danh sách các bộ giá trị chứa tên thư viện và chuỗi phiên bản tương ứng của chúng.
-    versions = [
-        # [EN] Python version record.
-        # [VN] Bản ghi phiên bản Python.
-        ("Python", sys.version),
-        # [EN] Operating System platform record.
-        # [VN] Bản ghi nền tảng Hệ điều hành.
-        ("Platform", platform.platform()),
-        # [EN] Pandas version record.
-        # [VN] Bản ghi phiên bản Pandas.
-        ("Pandas", pd.__version__),
-        # [EN] NumPy version record.
-        # [VN] Bản ghi phiên bản NumPy.
-        ("NumPy", np.__version__),
-        # [EN] Matplotlib version record.
-        # [VN] Bản ghi phiên bản Matplotlib.
-        ("Matplotlib", matplotlib.__version__),
-        # [EN] Seaborn version record.
-        # [VN] Bản ghi phiên bản Seaborn.
-        ("Seaborn", sns.__version__),
-        # [EN] Scikit-Learn version record.
-        # [VN] Bản ghi phiên bản Scikit-Learn.
-        ("Scikit-Learn", sklearn.__version__),
-        # [EN] SHAP version record.
-        # [VN] Bản ghi phiên bản SHAP.
-        ("SHAP", shap.__version__)
-    ]
-
-    # [EN] Construct the header string for the version report using string multiplication.
-    # [VN] Xây dựng chuỗi tiêu đề cho báo cáo phiên bản bằng phép nhân chuỗi.
-    header = "\n" + "="*50 + "\nENVIRONMENT & LIBRARY VERSIONS\n" + "="*50 + "\n"
-    
-    # [EN] Print the header to the console.
-    # [VN] In tiêu đề ra màn hình console.
-    print(header)
-    
-    # [EN] Open the specified report file in append mode.
-    # [VN] Mở tệp báo cáo được chỉ định ở chế độ ghi nối thêm.
-    with open(report_file, 'a') as f:
-        # [EN] Write the header to the file.
-        # [VN] Ghi tiêu đề vào tệp.
-        f.write(header)
-        
-        # [EN] Iterate through the version list.
-        # [VN] Lặp qua danh sách phiên bản.
-        for name, version in versions:
-            # [EN] Format each line with consistent padding for readability.
-            # [VN] Định dạng mỗi dòng với khoảng cách lề nhất quán để dễ đọc.
-            line = f"{name:<15}: {version}"
-            
-            # [EN] Display the formatted line in console.
-            # [VN] Hiển thị dòng đã định dạng trên màn hình console.
-            print(line)
-            
-            # [EN] Append the line to the file, followed by a newline.
-            # [VN] Thêm dòng này vào tệp, theo sau là một ký tự xuống dòng.
-            f.write(line + "\n")
-            
-    # [EN] Create a closing separator.
-    # [VN] Tạo một dải phân cách kết thúc.
-    footer = "="*50 + "\n"
-    
-    # [EN] Print the footer to console.
-    # [VN] In phần kết thúc ra console.
-    print(footer)
-    
-    # [EN] Re-open the file to append the footer.
-    # [VN] Mở lại tệp để ghi nối thêm phần kết thúc.
-    with open(report_file, 'a') as f:
-        # [EN] Write the footer to the report file.
-        # [VN] Ghi phần kết thúc vào tệp báo cáo.
-        f.write(footer)
-
-# [EN] Execute the version logging function immediately upon script start.
-# [VN] Thực thi hàm ghi nhật ký phiên bản ngay lập tức khi bắt đầu kịch bản.
-log_library_versions()
-
 # [EN] Define a utility function to print text and append it to a log file.
 # [VN] Định nghĩa một hàm tiện ích để in văn bản và nối nó vào tệp nhật ký.
 def write_report(text):
@@ -881,8 +796,8 @@ final_submission = submission_df[['Date', 'Revenue', 'COGS']]
 
 # [EN] Render DataFrame cleanly out to a universally accessible comma-separated file without index column.
 # [VN] Xuất DataFrame một cách gọn gàng ra tệp phân tách bằng dấu phẩy có thể truy cập toàn cầu không có cột chỉ mục.
-final_submission.to_csv('official_submission.csv', index=False)
+final_submission.to_csv('submission.csv', index=False)
 
 # [EN] Log the absolute end marker acknowledging complete file generation.
 # [VN] Ghi nhật ký mốc kết thúc tuyệt đối xác nhận việc tạo tệp hoàn tất.
-write_report(f"Successfully generated official_submission.csv spanning 2023-01-01 to 2024-07-01.")
+write_report(f"Successfully generated submission.csv spanning 2023-01-01 to 2024-07-01.")
